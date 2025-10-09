@@ -1,0 +1,3549 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="NS_NLCSnetbeheerAlliander" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:ogc="http://www.opengis.net/ogc" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:keuzelijst="NS_NLCSnetbeheerAllianderKL" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="NS_NLCSnetbeheerAlliander" version="11" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:import schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" namespace="http://www.opengis.net/gml/3.2" />
+	<xs:import schemaLocation="NLCS_NetbeheerAllianderV11Import_Keuzelijst.xsd" namespace="NS_NLCSnetbeheerAllianderKL" />
+	<xs:element name="NLCSnetbeheerAlliander" substitutionGroup="gml:AbstractFeatureCollection">
+		<xs:complexType>
+			<xs:complexContent mixed="false">
+				<xs:extension base="gml:AbstractFeatureCollectionType">
+					<xs:sequence>
+						<xs:element minOccurs="0" name="VersieNummer" type="xs:string" />
+						<xs:element minOccurs="1" maxOccurs="1" name="AprojectReferentie">
+							<xs:complexType>
+								<xs:complexContent mixed="false">
+									<xs:extension base="gml:AbstractFeatureType">
+										<xs:sequence>
+											<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+											<xs:element minOccurs="0" maxOccurs="1" name="Projectnummer">
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:maxLength value="50" />
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:element>
+											<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:maxLength value="255" />
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:element>
+											<xs:element minOccurs="0" maxOccurs="1" name="DeelrevisieVolgnummer">
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:maxLength value="50" />
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:element>
+											<xs:element minOccurs="0" maxOccurs="1" name="Tekeningtype" type="keuzelijst:Tekeningtype" />
+											<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:SurfacePropertyType" />
+										</xs:sequence>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:choice minOccurs="0" maxOccurs="unbounded">
+							<xs:element maxOccurs="unbounded" name="LSkabel">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Uitvoering" type="keuzelijst:UitvoeringLSKabel" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Kabelopbouw" type="keuzelijst:OpbouwLSKabel" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Fabrikant" type="keuzelijst:FabrikantKabel" />
+												<xs:element minOccurs="0" maxOccurs="1" name="OmschrijvingUitvoering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumFabricage" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Functie" type="keuzelijst:FunctieLSKabel" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Spanningsniveau" type="keuzelijst:SpanningsniveauLSKabel" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Inmeetwijze" type="keuzelijst:Inmeetwijze" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Nauwkeurigheid" type="keuzelijst:NauwkeurigheidXYvalue" />
+												<xs:element minOccurs="0" maxOccurs="1" name="RedenNietVerwijdering" type="keuzelijst:RedenNietVerwijdering" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Verbindingnummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Subnettype" type="keuzelijst:SubnettypeLS" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Aardingsysteem" type="keuzelijst:Aardingsysteem" />
+												<xs:element minOccurs="0" maxOccurs="1" name="FaseAanduiding" type="keuzelijst:Faseaanduiding" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bovengronds" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Zegeltekst">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:CurvePropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="MSkabel">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Uitvoering" type="keuzelijst:UitvoeringMSKabel" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Kabelopbouw" type="keuzelijst:OpbouwMSKabel" />
+												<xs:element minOccurs="0" maxOccurs="1" name="OmschrijvingUitvoering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Fabrikant" type="keuzelijst:FabrikantKabel" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumFabricage" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Spanningsniveau" type="keuzelijst:SpanningsniveauMSKabel" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Inmeetwijze" type="keuzelijst:Inmeetwijze" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Nauwkeurigheid" type="keuzelijst:NauwkeurigheidXYvalue" />
+												<xs:element minOccurs="0" maxOccurs="1" name="RedenNietVerwijdering" type="keuzelijst:RedenNietVerwijdering" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Verbindingnummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Subnettype" type="keuzelijst:Subnettype" />
+												<xs:element minOccurs="0" maxOccurs="1" name="FaseAanduiding" type="keuzelijst:Faseaanduiding" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Zegeltekst">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:CurvePropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="OVLoverdrachtspunt">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Aansluitset" type="keuzelijst:AansluitsetOvl" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Mastnummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Functie" type="keuzelijst:FunctieOvlOverdrachtspunt" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Spanningsniveau" type="keuzelijst:SpanningsniveauLSKabel" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Doorlaatwaarde" type="keuzelijst:Doorlaatwaarde" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DoorverbindingAardeNul" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Aansluitwijze" type="keuzelijst:AansluitwijzeOvl" />
+												<xs:element minOccurs="0" maxOccurs="1" name="VoedingEnSturing" type="keuzelijst:VoedingEnSturingOvl" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Schakeling" type="keuzelijst:SchakelingOvl" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Kabelmontage" type="keuzelijst:Kabelmontage" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="LSoverdrachtspunt">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Doorlaatwaarde" type="keuzelijst:Doorlaatwaarde" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Uitvoering" type="keuzelijst:UitvoeringLSoverdrachtspunt" />
+												<xs:element minOccurs="0" maxOccurs="1" name="EigenRichting" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Functie" type="keuzelijst:FunctieLSoverdrachtspunt" />
+												<xs:element minOccurs="0" maxOccurs="1" name="FaseAanduiding" type="keuzelijst:Faseaanduiding" />
+												<xs:element minOccurs="0" maxOccurs="1" name="InpandigeKabellengte" type="xs:integer" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Aardingsysteem" type="keuzelijst:Aardingsysteem" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Kabelmontage" type="keuzelijst:Kabelmontage" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="BAGid">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="BGTid">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="LSkast">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Naam">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Nummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Functie" type="keuzelijst:FunctieLSkast" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Straatnaam">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Huisnummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="15" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="HuisnummerToevoeging">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="15" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Postcode">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="7" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Plaatsnaam">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="BAGid">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:SurfacePropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="MSstation">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Naam">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Nummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Functie" type="keuzelijst:FunctieElectraStation" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Straatnaam">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Huisnummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="15" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="HuisnummerToevoeging">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="15" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Postcode">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="7" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Plaatsnaam">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="BAGid">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:SurfacePropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="MSoverdrachtspunt">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Identificatie">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="MSmof">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Uitvoering" type="keuzelijst:UitvoeringMSMof" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Functie" type="keuzelijst:FunctieMSmof" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Verbindingnummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Mofnummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="NaamMonteur">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="CrossBondingAanwezig" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Eaardmof">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Netvlak" type="keuzelijst:NetvlakElektra" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Eaarddraad">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Doorsnede" type="keuzelijst:DoorsnedeAarddraad" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geleidermateriaal" type="keuzelijst:Geleidermateriaal" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Isolatiemateriaal" type="keuzelijst:IsolatiemateriaalAarddraad" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Inmeetwijze" type="keuzelijst:Inmeetwijze" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Nauwkeurigheid" type="keuzelijst:NauwkeurigheidXYvalue" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Netvlak" type="keuzelijst:NetvlakElektra" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:CurvePropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Eaardpen">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Doorsnede" type="keuzelijst:DoorsnedeAardpen" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Materiaal" type="keuzelijst:MateriaalAardpen" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Netvlak" type="keuzelijst:NetvlakElektra" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Amantelbuis">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Materiaal" type="keuzelijst:MateriaalMantelbuis" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Diameter" type="keuzelijst:DiameterMantelbuis" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Inmeetwijze" type="keuzelijst:Inmeetwijze" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Nauwkeurigheid" type="keuzelijst:NauwkeurigheidXYvalue" />
+												<xs:element minOccurs="0" maxOccurs="1" name="KathodischBeschermd" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="BovengrondsGemarkeerd" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Thema" type="keuzelijst:Thema" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:CurvePropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="AmantelbuisInhoud">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="MantelbuisAssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="ObjectTypeKabelLeiding" type="keuzelijst:ObjectType" />
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetIdKabelLeiding">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="MantelbuisHandle">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="4" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="KabelLeidingHandle">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="4" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:CurvePropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="AbeschermingVlak">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="SoortBescherming" type="keuzelijst:SoortBescherming" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Thema" type="keuzelijst:Thema" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:SurfacePropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Aopmerking">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Omschrijving">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Thema" type="keuzelijst:Thema" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="AbestandBijlage">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="SoortBestand" type="keuzelijst:BijlageTypeValue" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bestandsnaam">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="250" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="TypeBestand" type="keuzelijst:BestandMediaTypeValue" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Thema" type="keuzelijst:Thema" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Kijkhoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetHandle">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Amaaiveldhoogte">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Thema" type="keuzelijst:Thema" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Akunstwerk">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="SoortKunstwerk" type="keuzelijst:SoortKunstwerk" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Kunstwerknummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Thema" type="keuzelijst:Thema" />
+												<xs:element minOccurs="0" maxOccurs="1" name="StraalBoogzinker" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:CurvePropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Aaanlegtechniek">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="SoortAanlegTechniek" type="keuzelijst:SoortAanlegTechniek" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Thema" type="keuzelijst:Thema" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:CurvePropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Gstation">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Naam">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Nummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:BewerkingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="StationFunctie" type="keuzelijst:FunctieGasStation" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GasunieCode">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Straatnaam">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Huisnummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="15" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="HuisnummerToevoeging">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="15" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Postcode">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="7" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Plaatsnaam">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="BAGid">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:SurfacePropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Gleiding">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="BuitenDiameter" type="keuzelijst:BuitenDiameterGasleiding" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Materiaal" type="keuzelijst:MateriaalGasleiding" />
+												<xs:element minOccurs="0" maxOccurs="1" name="SDR" type="keuzelijst:SDRgas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="OmschrijvingUitvoering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Fabrikant" type="keuzelijst:FabrikantGasLeiding" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:BewerkingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Druk" type="keuzelijst:Druk" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Inmeetwijze" type="keuzelijst:Inmeetwijze" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Nauwkeurigheid" type="keuzelijst:NauwkeurigheidXYvalue" />
+												<xs:element minOccurs="0" maxOccurs="1" name="RedenNietVerwijdering" type="keuzelijst:RedenNietVerwijdering" />
+												<xs:element minOccurs="0" maxOccurs="1" name="SoortGas" type="keuzelijst:SoortGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Verbindingstechniek" type="keuzelijst:VerbindingstechniekGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Netvlak" type="keuzelijst:NetvlakGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Subnettype" type="keuzelijst:Subnettype" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Trekvast" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="KBaanwezig" type="keuzelijst:KBaanwezig" />
+												<xs:element minOccurs="0" maxOccurs="1" name="KBsectie">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="BuisbekledingAchteraf" type="keuzelijst:BuisbekledingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="BuisverbindingBekleding" type="keuzelijst:VerbindingbekledingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:CurvePropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Gafsluiter">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="SoortAfsluiter" type="keuzelijst:SoortGasAfsluiter" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Diameter" type="keuzelijst:BuitenDiameterGasleiding" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Materiaal" type="keuzelijst:MateriaalGasAfsluiter" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Draaiwijze" type="keuzelijst:DraaiwijzeGasAfsluiter" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Drukklasse" type="keuzelijst:DrukklasseGasAfsluiter" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Fabrikant" type="keuzelijst:FabrikantGasAfsluiter" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:BewerkingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Functie" type="keuzelijst:FunctieGasAfsluiter" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Druk" type="keuzelijst:Druk" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Steekflens" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Nummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Verbindingstechniek" type="keuzelijst:VerbindingstechniekGasAfsluiter" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Voorkeurstand" type="keuzelijst:Voorkeurstand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="AfblaasOpgebouwd" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Serienummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Subnettype" type="keuzelijst:Subnettype" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Netvlak" type="keuzelijst:NetvlakGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="GtStuk">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Uitvoering" type="keuzelijst:UitvoeringGasTstuk" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:BewerkingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Druk" type="keuzelijst:Druk" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Netvlak" type="keuzelijst:NetvlakGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Goverdrachtspunt">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="SoortAansluiting" type="keuzelijst:SoortGasAansluiting" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:BewerkingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Druk" type="keuzelijst:Druk" />
+												<xs:element minOccurs="0" maxOccurs="1" name="BAGid">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Netvlak" type="keuzelijst:NetvlakGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="InpandigeLeidinglengte" type="xs:integer" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Gaftakzadel">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Uitvoering" type="keuzelijst:UitvoeringAftakzadel" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:BewerkingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Druk" type="keuzelijst:Druk" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Netvlak" type="keuzelijst:NetvlakGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Geindstuk">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Uitvoering" type="keuzelijst:UitvoeringEindstuk" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:BewerkingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Druk" type="keuzelijst:Druk" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Netvlak" type="keuzelijst:NetvlakGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="GappendageOverig">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Soort" type="keuzelijst:SoortGasAppendage" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Fabrikant" type="keuzelijst:FabrikantGasAppendage" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:BewerkingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Druk" type="keuzelijst:Druk" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Netvlak" type="keuzelijst:NetvlakGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Gisolatiestuk">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Uitvoering" type="keuzelijst:UitvoeringGasIsolatiestuk" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:BewerkingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Functie" type="keuzelijst:FunctieGasIsolatiestuk" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Druk" type="keuzelijst:Druk" />
+												<xs:element minOccurs="0" maxOccurs="1" name="BekledingAchteraf" type="keuzelijst:AppendagebekledingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Netvlak" type="keuzelijst:NetvlakGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Govergangsstuk">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Uitvoering" type="keuzelijst:UitvoeringGasOvergangsstuk" />
+												<xs:element minOccurs="0" maxOccurs="1" name="OmschrijvingUitvoering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:BewerkingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Druk" type="keuzelijst:Druk" />
+												<xs:element minOccurs="0" maxOccurs="1" name="BekledingAchteraf" type="keuzelijst:AppendagebekledingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Netvlak" type="keuzelijst:NetvlakGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Gmeetpunt">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="SoortMeetpunt" type="keuzelijst:SoortGasMeetpunt" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:BewerkingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Druk" type="keuzelijst:Druk" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Netvlak" type="keuzelijst:NetvlakGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Gsifon">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:BewerkingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Druk" type="keuzelijst:Druk" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Standpijp" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Netvlak" type="keuzelijst:NetvlakGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="GverticaleBocht">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:BewerkingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Druk" type="keuzelijst:Druk" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Netvlak" type="keuzelijst:NetvlakGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Gontspanningselement">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Uitvoering" type="keuzelijst:UitvoeringOntspanningselement" />
+												<xs:element minOccurs="0" maxOccurs="1" name="KoppelingAansluitleiding" type="keuzelijst:KoppelingAansluitleidingOSE" />
+												<xs:element minOccurs="0" maxOccurs="1" name="KoppelingGeveldoorvoer" type="keuzelijst:KoppelingGeveldoorvoerOSE" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:BewerkingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Druk" type="keuzelijst:Druk" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Gblaasgatzadel">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:BewerkingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Druk" type="keuzelijst:Druk" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Netvlak" type="keuzelijst:NetvlakGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Gleidingafblaas">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Soort" type="keuzelijst:SoortGasLeidingafblaas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Diameter" type="keuzelijst:BuitenDiameterGasleiding" />
+												<xs:element minOccurs="0" maxOccurs="1" name="SoortAfsluiter" type="keuzelijst:SoortGasAfsluiterAfblaas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:BewerkingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Druk" type="keuzelijst:Druk" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Verbindingstechniek" type="keuzelijst:VerbindingstechniekGasAfsluiter" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Netvlak" type="keuzelijst:NetvlakGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Amarkeringsobject">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:BewerkingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Nummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Thema" type="keuzelijst:Thema" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Opmerking">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="KBgelijkrichter">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Uitvoering" type="keuzelijst:UitvoeringKBgelijkrichter" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Fabrikant" type="keuzelijst:FabrikantKBgelijkrichter" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:BewerkingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="AantalAnodes" type="xs:integer" />
+												<xs:element minOccurs="0" maxOccurs="1" name="OvergangsweerstandAnodebed" type="xs:integer" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Naam">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Meetpuntnummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="KBnet">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="KBsectie">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Signalering" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Onderbreker" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="CapaciteitSpanning" type="xs:integer" />
+												<xs:element minOccurs="0" maxOccurs="1" name="CapaciteitStroom" type="xs:integer" />
+												<xs:element minOccurs="0" maxOccurs="1" name="SerienummerVoeding">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="MateriaalBehuizing" type="keuzelijst:MateriaalBehuizingKBgelijkrichter" />
+												<xs:element minOccurs="0" maxOccurs="1" name="TypeBehuizing" type="keuzelijst:TypeKBbehuizingGelijkrichter" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Thema" type="keuzelijst:ThemaKB" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="KBmeetpaal">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="TypeBehuizing" type="keuzelijst:TypeKBbehuizingMeetpaal" />
+												<xs:element minOccurs="0" maxOccurs="1" name="TypeMeetelectrode" type="keuzelijst:TypeKBmeetelectrode" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:BewerkingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Functie" type="keuzelijst:FunctieKBmeetpaal" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Inmeetwijze" type="keuzelijst:Inmeetwijze" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Nauwkeurigheid" type="keuzelijst:NauwkeurigheidXYvalue" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Meetpuntnummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="NummerFysiekOpMeetpaal">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="KBnet">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="KBsectie">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="WeerstandAanwezig" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DiodeAanwezig" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="BeschermbeugelAanwezig" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="NadereToegangsaanduiding" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="AantalStiften" type="xs:integer" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Telemeting" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Thema" type="keuzelijst:ThemaKB" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="KBmeetdraad">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Uitvoering" type="keuzelijst:UitvoeringKBdraad" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:BewerkingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="FunctieVerbondenObject" type="keuzelijst:FunctieKBdraad" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Subfunctie" type="keuzelijst:SubfunctieKBdraad" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Inmeetwijze" type="keuzelijst:Inmeetwijze" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Nauwkeurigheid" type="keuzelijst:NauwkeurigheidXYvalue" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Kabelkleur" type="keuzelijst:KabelkleurKBdraad" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Omschrijving">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="ExtraCodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="CoderingVerbondenObject">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Doorverbonden" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="KBnet">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="KBsectie">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Thema" type="keuzelijst:ThemaKB" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Lengte" type="xs:integer" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:CurvePropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="KBanode">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="SoortAnode" type="keuzelijst:SoortKBanode" />
+												<xs:element minOccurs="0" maxOccurs="1" name="AantalAnodes" type="xs:integer" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Materiaal" type="keuzelijst:MateriaalKBanode" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:BewerkingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Nummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="KBnet">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="GewichtPerAnode">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="LengteKolom">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Boordiepte">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="KBsectie">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Thema" type="keuzelijst:ThemaKB" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="KBdrainage">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Type" type="keuzelijst:TypeKBdrainage" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Fabrikant" type="keuzelijst:FabrikantKBdrainage" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:BewerkingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Nummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="KBnet">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="KBsectie">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="DrainageStroomsoort" type="keuzelijst:StroomsoortKBdrainage" />
+												<xs:element minOccurs="0" maxOccurs="1" name="InstelwaardeGedraineerdeStroom" type="xs:integer" />
+												<xs:element minOccurs="0" maxOccurs="1" name="VeroorzakerZwerfstroom">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Zekeringswaarde" type="xs:integer" />
+												<xs:element minOccurs="0" maxOccurs="1" name="ReservekabelAanwezig" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="ReservekabelInGebruik" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Thema" type="keuzelijst:ThemaKB" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="KBobject">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="SoortObject" type="keuzelijst:SoortKBobject" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:BewerkingGas" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Objectnummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="KBnet">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="KBsectie">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Thema" type="keuzelijst:ThemaKB" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Tkabel">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="OmschrijvingUitvoering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Fabrikant" type="keuzelijst:FabrikantKabel" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumFabricage" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Inmeetwijze" type="keuzelijst:Inmeetwijze" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Nauwkeurigheid" type="keuzelijst:NauwkeurigheidXYvalue" />
+												<xs:element minOccurs="0" maxOccurs="1" name="RedenNietVerwijdering" type="keuzelijst:RedenNietVerwijdering" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Verbindingnummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Zegeltekst">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Subnettype" type="keuzelijst:Subnettype" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:CurvePropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Tmof">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="TypeOmschrijving">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Functie" type="keuzelijst:FunctieTelecomMof" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Subnettype" type="keuzelijst:Subnettype" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Toverdrachtspunt">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="BAGid">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="InpandigeKabellengte" type="xs:integer" />
+												<xs:element minOccurs="0" maxOccurs="1" name="BGTid">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Tstation">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Naam">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Nummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Straatnaam">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Huisnummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="15" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="HuisnummerToevoeging">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="15" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Postcode">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="7" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Plaatsnaam">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="BAGid">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:SurfacePropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Tbuis">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Materiaal" type="keuzelijst:MateriaalTelecomBuis" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Diameter" type="keuzelijst:DiameterTelecomBuis" />
+												<xs:element minOccurs="0" maxOccurs="1" name="OmschrijvingUitvoering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Fabrikant" type="keuzelijst:FabrikantKabel" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumFabricage" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Inmeetwijze" type="keuzelijst:Inmeetwijze" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Nauwkeurigheid" type="keuzelijst:NauwkeurigheidXYvalue" />
+												<xs:element minOccurs="0" maxOccurs="1" name="RedenNietVerwijdering" type="keuzelijst:RedenNietVerwijdering" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Buisnummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Kleur" type="keuzelijst:KleurTelecombuis" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Subnettype" type="keuzelijst:Subnettype" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:CurvePropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="HSkabel">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Uitvoering" type="keuzelijst:UitvoeringHSKabel" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Kabelopbouw" type="keuzelijst:OpbouwHSKabel" />
+												<xs:element minOccurs="0" maxOccurs="1" name="OmschrijvingUitvoering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Fabrikant" type="keuzelijst:FabrikantKabel" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumFabricage" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Spanningsniveau" type="keuzelijst:SpanningsniveauHSKabel" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Inmeetwijze" type="keuzelijst:Inmeetwijze" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Nauwkeurigheid" type="keuzelijst:NauwkeurigheidXYvalue" />
+												<xs:element minOccurs="0" maxOccurs="1" name="RedenNietVerwijdering" type="keuzelijst:RedenNietVerwijdering" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Verbindingnummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="FaseAanduiding" type="keuzelijst:Faseaanduiding" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Zegeltekst">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:CurvePropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="HSmof">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Uitvoering" type="keuzelijst:UitvoeringHSMof" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Fabrikant" type="keuzelijst:FabrikantHSMof" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Functie" type="keuzelijst:FunctieHSmof" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Mofnummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="NaamMonteur">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="CrossBondingAanwezig" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="HSstation">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Naam">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Nummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Functie" type="keuzelijst:FunctieElectraStation" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Straatnaam">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Huisnummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="15" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="HuisnummerToevoeging">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="15" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Postcode">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="7" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Plaatsnaam">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="BGTid">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:SurfacePropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Eoliedrukleiding">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="OmschrijvingUitvoering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumFabricage" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Nauwkeurigheid" type="keuzelijst:NauwkeurigheidXYvalue" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Inmeetwijze" type="keuzelijst:Inmeetwijze" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Sectienummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:CurvePropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="Eoliedrukinstallatie">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="OmschrijvingUitvoering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumFabricage" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Volgnummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Sectienummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="TbuisAppendage">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Soort" type="keuzelijst:SoortTelecomBuisAppendage" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Subnettype" type="keuzelijst:Subnettype" />
+												<xs:element minOccurs="0" maxOccurs="1" name="TypeOmschrijving">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="LSmof">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Type" type="keuzelijst:TypeLSMof" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Fabrikant" type="keuzelijst:FabrikantLSMof" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DatumAanleg" type="xs:date" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Toelichting">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="255" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bedrijfstoestand" type="keuzelijst:Bedrijfstoestand" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Functie" type="keuzelijst:FunctieLSmof" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Verbindingnummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Subnettype" type="keuzelijst:SubnettypeLS" />
+												<xs:element minOccurs="0" maxOccurs="1" name="DoorverbindingAardeNul" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="AardeGekoppeld" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="NetGekoppeld" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="OvlGekoppeld" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="TariefGekoppeld" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="NulGekoppeld" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bovengronds" type="keuzelijst:JaNee" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Eigenaar" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Beheerder" type="keuzelijst:EigenaarBeheerder" />
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="AssetId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="38" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Artikelcodering">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element maxOccurs="unbounded" name="AinUittredepunt">
+								<xs:complexType>
+									<xs:complexContent mixed="false">
+										<xs:extension base="gml:AbstractFeatureType">
+											<xs:sequence>
+												<xs:element minOccurs="1" maxOccurs="1" name="Handle" type="xs:string" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Richting" type="keuzelijst:InUit" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Status" type="keuzelijst:Status" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Bewerking" type="keuzelijst:Bewerking" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Kunstwerknummer">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="HandleAanlegTechniek">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="GisId">
+													<xs:simpleType>
+														<xs:restriction base="xs:string">
+															<xs:maxLength value="50" />
+														</xs:restriction>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element minOccurs="0" maxOccurs="1" name="Hoek" type="xs:double" />
+												<xs:element minOccurs="0" maxOccurs="1" name="Geometry" type="gml:PointPropertyType" />
+											</xs:sequence>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
