@@ -1,36 +1,158 @@
-# This is a basic workflow to help you get started with Actions
+name: Deploy Schemas (A Silly Deployment in Several Parts)
 
-name: CI
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  deploy:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Fetch the repository (it's not dead yet!)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Nobody expects the deployment context!
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          echo "========================================"
+          echo "SCENE: A Deployment, Rendered in Bits"
+          echo "========================================"
+          echo "Trigger: ${{ github.event_name }}"
+          echo "Branch: ${{ github.ref }}"
+          echo "Commit: ${{ github.sha }}"
+          echo "Author: ${{ github.actor }}"
+          echo "Ni!"
+          echo "========================================"
+      
+      - name: Knights of Ni say: Check the schema directory!
+        run: |
+          echo "We demand a shrubbery... no wait, we demand schemas!"
+          if [ -d "./schemas" ]; then
+            echo "It is the schema directory! It has come!"
+            XSD_COUNT=$(find ./schemas -type f -name "*.xsd" | wc -l)
+            echo "One... two... three... $XSD_COUNT XSD files! Ahh, ahh, ahh!"
+            echo ""
+            echo "This is the directory structure, blessed are we:"
+            tree -L 3 ./schemas 2>/dev/null || find ./schemas -type d | head -20
+          else
+            echo "This is not the directory you're looking for."
+            echo "It has rung down the curtain and joined the bleedin' choir invisible!"
+            exit 1
+          fi
+      
+      - name: And now for something completely different - SSH keys
+        run: |
+          echo "I didn't vote for the SSH key..."
+          mkdir -p ~/.ssh
+          
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          echo "One does not simply lose one's SSH key. It is protected."
+          
+          echo "Adding the dead parrot to our hosts..."
+          ssh-keyscan -p ${{ secrets.DEPLOY_PORT }} ${{ secrets.DEPLOY_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
+          echo "It is not dead, it is merely resting!"
+          
+          if [ -f ~/.ssh/deploy_key ]; then
+            echo "The SSH key has defeated the Killer Rabbit"
+          else
+            echo "Run away! The SSH key is missing!"
+            exit 1
+          fi
+      
+      - name: Strange women lying in deployment ponds distributing SSH keys
+        run: |
+          echo "We're the knights who say SSH..."
+          ssh -i ~/.ssh/deploy_key \
+            -p ${{ secrets.DEPLOY_PORT }} \
+            -o ConnectTimeout=10 \
+            -o StrictHostKeyChecking=no \
+            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
+            "echo 'The password is sword'" 2>&1 | grep -v "^"
+          
+          if [ $? -eq 0 ]; then
+            echo "Your mother was a hamster and your SSH connection smells of elderberries!"
+          else
+            echo "We are no longer the knights who say SSH. We are now the Knights who say 'NI!'"
+            exit 1
+          fi
+      
+      - name: A Dry Run, Or How I Learned To Stop Worrying And Love The Rsync
+        run: |
+          echo "This is a test. This is only a test."
+          echo "If this had been an actual deployment..."
+          echo ""
+          
+          rsync -avz --dry-run \
+            -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.DEPLOY_PORT }} -o StrictHostKeyChecking=no" \
+            ./schemas/ \
+            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_REMOTE_PATH }} \
+            2>&1 | grep -E "^(>|deleting|sent)" | head -20
+          
+          echo ""
+          echo "Coo-coo-ca-choo! The dry run is complete!"
+      
+      - name: "It's just a flesh wound" - Actual Deployment
+        run: |
+          echo "========================================"
+          echo "'Tis but a mere deployment, I assure you"
+          echo "========================================"
+          echo ""
+          
+          rsync -avz \
+            -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.DEPLOY_PORT }} -o StrictHostKeyChecking=no" \
+            ./schemas/ \
+            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_REMOTE_PATH }} \
+            2>&1 | grep -E "^(>|deleting|sent|total)" | tail -20
+          
+          if [ $? -eq 0 ]; then
+            echo "He's not the Messiah, he's a very naughty deployment!"
+          else
+            echo "The deployment is dying. Please, leave it alone."
+            exit 1
+          fi
+      
+      - name: "I fart in your general direction!" - Verify
+        run: |
+          echo "Your deployment time is up!"
+          ssh -i ~/.ssh/deploy_key \
+            -p ${{ secrets.DEPLOY_PORT }} \
+            -o StrictHostKeyChecking=no \
+            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
+            "find ${{ secrets.DEPLOY_REMOTE_PATH }} -type f -name '*.xsd' | wc -l | xargs echo 'Ni! Files deployed:'" 2>&1
+          
+          echo "Now go away or I shall taunt you a second time!"
+      
+      - name: Always look on the bright side of cleanup
+        if: always()
+        run: |
+          echo "Some things in life are bad, they can really make you mad..."
+          echo "Removing temporary files..."
+          rm -f ~/.ssh/deploy_key
+          echo "Other things just make you swear and curse... but when you're chewing on life's gristle..."
+          echo "Cleanup complete!"
+      
+      - name: "I'm not dead yet!" - Success
+        if: success()
+        run: |
+          echo "========================================"
+          echo "We have successfully completed the quest!"
+          echo "========================================"
+          echo "The schemas have been deployed!"
+          echo "Deployment time: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+          echo "Now, let's go look for another deployment!"
+      
+      - name: "This is your final warning!" - Failure
+        if: failure()
+        run: |
+          echo "========================================"
+          echo "He's lost his mind!"
+          echo "========================================"
+          echo "The deployment has failed to arrive!"
+          echo "Your deployment is dead. Not just pining for the fjords."
+          echo "Check the logs, you silly English kanigget!"
