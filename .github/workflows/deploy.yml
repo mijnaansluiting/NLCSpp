@@ -91,32 +91,43 @@ jobs:
           echo "Organizing schema directory structure"
           echo "========================================"
           
-          # Create required directory structure
-          mkdir -p ./schemas/NS_NLCSnetbeheer/V11
+          # Create base directory structure
+          mkdir -p ./schemas/NS_NLCSnetbeheer
           
-          echo "Created directory structure:"
-          tree -L 3 ./schemas 2>/dev/null || find ./schemas -type d | sort
-          
-          # Check if there are any .xsd files in root of schemas/
-          if [ $(find ./schemas -maxdepth 1 -name "*.xsd" | wc -l) -gt 0 ]; then
-            echo ""
-            echo "Found XSD files in root, moving to NS_NLCSnetbeheer/V11/"
+          # Check for any loose .xsd files in root
+          LOOSE_FILES=$(find ./schemas -maxdepth 1 -name "*.xsd" | wc -l)
+          if [ $LOOSE_FILES -gt 0 ]; then
+            echo "Found $LOOSE_FILES XSD files in root"
+            echo "Moving them to NS_NLCSnetbeheer/V11/"
+            mkdir -p ./schemas/NS_NLCSnetbeheer/V11
             mv ./schemas/*.xsd ./schemas/NS_NLCSnetbeheer/V11/ 2>/dev/null || true
           fi
           
-          # Verify final structure
+          # Show all detected versions
+          echo ""
+          echo "Detected schema versions:"
+          VERSIONS=$(find ./schemas/NS_NLCSnetbeheer -maxdepth 1 -type d -name "V*" | sort)
+          
+          if [ -z "$VERSIONS" ]; then
+            echo "WARNING: No version directories found (V11, V12, etc.)"
+            echo "Creating V11 as default..."
+            mkdir -p ./schemas/NS_NLCSnetbeheer/V11
+          else
+            echo "$VERSIONS" | while read version; do
+              VERSION_NAME=$(basename "$version")
+              COUNT=$(find "$version" -name "*.xsd" | wc -l)
+              echo "  - $VERSION_NAME: $COUNT XSD files"
+            done
+          fi
+          
+          # Final structure
           echo ""
           echo "Final schema structure:"
           find ./schemas -type f | sort
           
           FINAL_COUNT=$(find ./schemas -type f -name "*.xsd" | wc -l)
           echo ""
-          echo "Total XSD files: $FINAL_COUNT"
-          
-          if [ $FINAL_COUNT -eq 0 ]; then
-            echo "WARNING: No XSD files found in schema directory!"
-            echo "Please add XSD files to ./schemas/ or ./schemas/NS_NLCSnetbeheer/V11/"
-          fi
+          echo "Total XSD files across all versions: $FINAL_COUNT"
       
       - name: Configure SSH key
         run: |
