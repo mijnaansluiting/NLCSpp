@@ -91,7 +91,7 @@ jobs:
           rsync -avz --dry-run \
             -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.DEPLOY_PORT }} -o StrictHostKeyChecking=no" \
             ./schemas/ \
-            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_REMOTE_PATH }} \
+            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.REMOTE_PATH }} \
             2>&1 | grep -E "^(>|deleting|sent)" | head -20
           
           echo ""
@@ -107,7 +107,7 @@ jobs:
           rsync -avz \
             -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.DEPLOY_PORT }} -o StrictHostKeyChecking=no" \
             ./schemas/ \
-            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_REMOTE_PATH }} \
+            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.REMOTE_PATH }} \
             2>&1 | grep -E "^(>|deleting|sent|total)" | tail -20
           
           if [ $? -eq 0 ]; then
