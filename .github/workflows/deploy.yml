@@ -17,16 +17,57 @@ jobs:
         with:
           fetch-depth: 0
       
-      - name: Log deployment context
+      - name: Validate required secrets
         run: |
           echo "========================================"
-          echo "Schema Deployment Started"
+          echo "Validating Required Secrets"
           echo "========================================"
-          echo "Trigger: ${{ github.event_name }}"
-          echo "Branch: ${{ github.ref }}"
-          echo "Commit: ${{ github.sha }}"
-          echo "Author: ${{ github.actor }}"
-          echo "========================================"
+          
+          MISSING=0
+          
+          if [ -z "${{ secrets.DEPLOY_HOST }}" ]; then
+            echo "ERROR: DEPLOY_HOST secret is missing"
+            MISSING=1
+          else
+            echo "DEPLOY_HOST: configured"
+          fi
+          
+          if [ -z "${{ secrets.DEPLOY_USER }}" ]; then
+            echo "ERROR: DEPLOY_USER secret is missing"
+            MISSING=1
+          else
+            echo "DEPLOY_USER: configured"
+          fi
+          
+          if [ -z "${{ secrets.DEPLOY_PORT }}" ]; then
+            echo "ERROR: DEPLOY_PORT secret is missing"
+            MISSING=1
+          else
+            echo "DEPLOY_PORT: configured"
+          fi
+          
+          if [ -z "${{ secrets.DEPLOY_SSH_KEY }}" ]; then
+            echo "ERROR: DEPLOY_SSH_KEY secret is missing"
+            MISSING=1
+          else
+            echo "DEPLOY_SSH_KEY: configured ($(echo -n "${{ secrets.DEPLOY_SSH_KEY }}" | wc -c) bytes)"
+          fi
+          
+          if [ -z "${{ secrets.REMOTE_PATH }}" ]; then
+            echo "ERROR: REMOTE_PATH secret is missing"
+            MISSING=1
+          else
+            echo "REMOTE_PATH: configured"
+          fi
+          
+          if [ $MISSING -eq 1 ]; then
+            echo ""
+            echo "Configure missing secrets in GitHub repository settings!"
+            exit 1
+          fi
+          
+          echo ""
+          echo "All required secrets are configured"
       
       - name: Validate schema directory
         run: |
@@ -45,81 +86,149 @@ jobs:
       
       - name: Configure SSH key
         run: |
+          echo "========================================"
           echo "Setting up SSH authentication..."
-          mkdir -p ~/.ssh
-          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          echo "SSH key configured"
+          echo "========================================"
           
+          mkdir -p ~/.ssh
+          
+          if [ -z "${{ secrets.DEPLOY_SSH_KEY }}" ]; then
+            echo "ERROR: DEPLOY_SSH_KEY secret is empty!"
+            exit 1
+          fi
+          
+          echo "Writing SSH key to file..."
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
+          
+          KEYSIZE=$(wc -c < ~/.ssh/deploy_key)
+          echo "SSH key file size: $KEYSIZE bytes"
+          
+          if [ $KEYSIZE -lt 100 ]; then
+            echo "ERROR: SSH key file is too small (likely corrupt)"
+            echo "First 50 chars: $(head -c 50 ~/.ssh/deploy_key)"
+            exit 1
+          fi
+          
+          chmod 600 ~/.ssh/deploy_key
+          echo "SSH key permissions set to 600"
+          
+          echo ""
           echo "Adding host to known_hosts..."
-          ssh-keyscan -p ${{ secrets.DEPLOY_PORT }} ${{ secrets.DEPLOY_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
+          ssh-keyscan -p ${{ secrets.DEPLOY_PORT }} ${{ secrets.DEPLOY_HOST }} >> ~/.ssh/known_hosts 2>&1
           echo "Host fingerprint added"
           
           if [ -f ~/.ssh/deploy_key ]; then
             echo "SSH key file verified"
           else
-            echo "ERROR: SSH key file not found!"
+            echo "ERROR: SSH key file not found after creation!"
             exit 1
           fi
+          
+          echo "SSH configuration completed"
       
       - name: Test SSH connection
         run: |
-          echo "Testing SSH connectivity..."
-          ssh -i ~/.ssh/deploy_key \
+          echo "========================================"
+          echo "SSH Configuration Debug"
+          echo "========================================"
+          echo "Host: ${{ secrets.DEPLOY_HOST }}"
+          echo "Port: ${{ secrets.DEPLOY_PORT }}"
+          echo "User: ${{ secrets.DEPLOY_USER }}"
+          echo ""
+          echo "SSH key file check:"
+          if [ -f ~/.ssh/deploy_key ]; then
+            echo "File exists: YES"
+            echo "File size: $(wc -c < ~/.ssh/deploy_key) bytes"
+            echo "Permissions: $(stat -c '%a' ~/.ssh/deploy_key)"
+            echo "First line: $(head -1 ~/.ssh/deploy_key)"
+          else
+            echo "ERROR: SSH key file does not exist!"
+            exit 1
+          fi
+          echo ""
+          echo "Testing SSH connection with verbose output..."
+          ssh -vvv -i ~/.ssh/deploy_key \
             -p ${{ secrets.DEPLOY_PORT }} \
             -o ConnectTimeout=10 \
+            -o BatchMode=yes \
             -o StrictHostKeyChecking=no \
             ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
-            "echo 'Connection successful'" 2>&1 | tail -1
+            "pwd" 2>&1 | tail -30
           
-          if [ ${PIPESTATUS[0]} -eq 0 ]; then
-            echo "SSH connection verified"
+          RESULT=$?
+          if [ $RESULT -eq 0 ]; then
+            echo "SSH connection verified successfully"
           else
-            echo "ERROR: SSH connection failed!"
+            echo "ERROR: SSH connection failed with exit code: $RESULT"
             exit 1
           fi
       
       - name: Dry-run rsync preview
         run: |
+          echo "========================================"
           echo "Running rsync dry-run..."
+          echo "========================================"
+          echo "Source: ./schemas/"
+          echo "Destination: ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.REMOTE_PATH }}"
           echo ""
+          
           rsync -avz --dry-run \
-            -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.DEPLOY_PORT }} -o StrictHostKeyChecking=no" \
+            -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.DEPLOY_PORT }} -o StrictHostKeyChecking=no -o ConnectTimeout=10" \
             ./schemas/ \
             ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.REMOTE_PATH }} \
-            2>&1 | grep -E "^(>|deleting|sent)" | head -20
+            2>&1
+          
+          DRYRUN_EXIT=$?
           echo ""
-          echo "Dry-run completed"
+          if [ $DRYRUN_EXIT -eq 0 ]; then
+            echo "Dry-run completed successfully"
+          else
+            echo "WARNING: Dry-run exited with code $DRYRUN_EXIT"
+          fi
       
       - name: Deploy schemas via rsync
         run: |
           echo "========================================"
-          echo "Starting deployment..."
+          echo "Starting actual deployment..."
           echo "========================================"
           echo ""
+          
           rsync -avz \
-            -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.DEPLOY_PORT }} -o StrictHostKeyChecking=no" \
+            -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.DEPLOY_PORT }} -o StrictHostKeyChecking=no -o ConnectTimeout=10" \
             ./schemas/ \
             ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.REMOTE_PATH }} \
-            2>&1 | grep -E "^(>|deleting|sent|total)" | tail -20
+            2>&1
           
-          SYNC_EXIT_CODE=$?
-          if [ $SYNC_EXIT_CODE -eq 0 ]; then
+          DEPLOY_EXIT=$?
+          echo ""
+          if [ $DEPLOY_EXIT -eq 0 ]; then
             echo "Deployment completed successfully"
           else
-            echo "ERROR: Deployment failed with exit code $SYNC_EXIT_CODE"
+            echo "ERROR: Deployment failed with exit code $DEPLOY_EXIT"
             exit 1
           fi
       
       - name: Verify deployed files
         run: |
+          echo "========================================"
           echo "Verifying deployed schemas..."
+          echo "========================================"
+          
           ssh -i ~/.ssh/deploy_key \
             -p ${{ secrets.DEPLOY_PORT }} \
             -o StrictHostKeyChecking=no \
+            -o ConnectTimeout=10 \
             ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
-            "find ${{ secrets.REMOTE_PATH }} -type f -name '*.xsd' | wc -l | xargs echo 'Total XSD files deployed:'"
-          echo "Verification completed"
+            "cd ${{ secrets.REMOTE_PATH }} && find . -type f -name '*.xsd' | wc -l"
+          
+          VERIFY_EXIT=$?
+          if [ $VERIFY_EXIT -eq 0 ]; then
+            echo ""
+            echo "Verification completed successfully"
+          else
+            echo "ERROR: Verification failed with exit code $VERIFY_EXIT"
+            exit 1
+          fi
       
       - name: Cleanup temporary files
         if: always()
