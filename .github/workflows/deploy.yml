@@ -77,11 +77,45 @@ jobs:
             XSD_COUNT=$(find ./schemas -type f -name "*.xsd" | wc -l)
             echo "XSD files found: $XSD_COUNT"
             echo ""
-            echo "Directory structure:"
-            tree -L 3 ./schemas 2>/dev/null || find ./schemas -type d | head -20
+            echo "Current directory structure:"
+            find ./schemas -type f -o -type d | sort
           else
-            echo "ERROR: Schema directory not found!"
-            exit 1
+            echo "Schema directory not found, creating it..."
+            mkdir -p ./schemas
+            echo "Created: ./schemas"
+          fi
+      
+      - name: Organize schema directory structure
+        run: |
+          echo "========================================"
+          echo "Organizing schema directory structure"
+          echo "========================================"
+          
+          # Create required directory structure
+          mkdir -p ./schemas/NS_NLCSnetbeheer/V11
+          
+          echo "Created directory structure:"
+          tree -L 3 ./schemas 2>/dev/null || find ./schemas -type d | sort
+          
+          # Check if there are any .xsd files in root of schemas/
+          if [ $(find ./schemas -maxdepth 1 -name "*.xsd" | wc -l) -gt 0 ]; then
+            echo ""
+            echo "Found XSD files in root, moving to NS_NLCSnetbeheer/V11/"
+            mv ./schemas/*.xsd ./schemas/NS_NLCSnetbeheer/V11/ 2>/dev/null || true
+          fi
+          
+          # Verify final structure
+          echo ""
+          echo "Final schema structure:"
+          find ./schemas -type f | sort
+          
+          FINAL_COUNT=$(find ./schemas -type f -name "*.xsd" | wc -l)
+          echo ""
+          echo "Total XSD files: $FINAL_COUNT"
+          
+          if [ $FINAL_COUNT -eq 0 ]; then
+            echo "WARNING: No XSD files found in schema directory!"
+            echo "Please add XSD files to ./schemas/ or ./schemas/NS_NLCSnetbeheer/V11/"
           fi
       
       - name: Configure SSH key
