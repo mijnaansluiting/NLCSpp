@@ -1,0 +1,565 @@
+
+<style>
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+}
+
+.table-container {
+    overflow-x: auto;
+    overflow-y: visible;
+    width: 100%;
+    max-height: 80vh;
+    display: block;
+    border: 1px solid #ccc;
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    background: #d9f2f2;
+    z-index: 3;
+    text-align: left;
+}
+
+td, th {
+    padding: 6px;
+    white-space: normal;
+}
+
+a[id] {
+    scroll-margin-top: 80px;
+}
+
+#AttributenTable td:nth-child(10),
+#AttributenTable th:nth-child(10) {
+    display: none;
+}
+
+#ObjectenTable td:nth-child(5),
+#ObjectenTable th:nth-child(5) {
+    display: none;
+}
+
+#KeuzelijstenTable td:nth-child(7),
+#KeuzelijstenTable th:nth-child(7) {
+    display: none;
+}
+
+#AttributenTable td:nth-child(5),
+#AttributenTable th:nth-child(5) {
+    max-width: 140px;
+    width: 140px;
+    white-space: normal;
+    word-break: break-word;
+}
+</style>
+
+
+
+<div style='margin-bottom: 10px; font-size: 14px;'>
+    <label><b>Filter op Object:</b></label>
+    <select id="ObjectenTable_filter" onchange="filterTable_ObjectenTable()">
+        <option value='ALL'>All</option>
+<option value='Aaanlegtechniek'>Aaanlegtechniek</option>
+<option value='AbeschermingVlak'>AbeschermingVlak</option>
+<option value='AbestandBijlage'>AbestandBijlage</option>
+<option value='AinUittredepunt'>AinUittredepunt</option>
+<option value='Akunstwerk'>Akunstwerk</option>
+<option value='Amaaiveldhoogte'>Amaaiveldhoogte</option>
+<option value='Amantelbuis'>Amantelbuis</option>
+<option value='AmantelbuisInhoud'>AmantelbuisInhoud</option>
+<option value='Amarkeringsobject'>Amarkeringsobject</option>
+<option value='Aopmerking'>Aopmerking</option>
+<option value='AprojectReferentie'>AprojectReferentie</option>
+<option value='Averplaatsing'>Averplaatsing</option>
+<option value='Eaarddraad'>Eaarddraad</option>
+<option value='Eaardmof'>Eaardmof</option>
+<option value='Eaardpen'>Eaardpen</option>
+<option value='Eoliedrukinstallatie'>Eoliedrukinstallatie</option>
+<option value='Eoliedrukleiding'>Eoliedrukleiding</option>
+<option value='Gafsluiter'>Gafsluiter</option>
+<option value='Gaftakzadel'>Gaftakzadel</option>
+<option value='GappendageOverig'>GappendageOverig</option>
+<option value='Gblaasgatzadel'>Gblaasgatzadel</option>
+<option value='Geindstuk'>Geindstuk</option>
+<option value='Gisolatiestuk'>Gisolatiestuk</option>
+<option value='Gleiding'>Gleiding</option>
+<option value='Gleidingafblaas'>Gleidingafblaas</option>
+<option value='Gmeetpunt'>Gmeetpunt</option>
+<option value='Gontspanningselement'>Gontspanningselement</option>
+<option value='Goverdrachtspunt'>Goverdrachtspunt</option>
+<option value='Govergangsstuk'>Govergangsstuk</option>
+<option value='Gsifon'>Gsifon</option>
+<option value='Gstation'>Gstation</option>
+<option value='GtStuk'>GtStuk</option>
+<option value='GverticaleBocht'>GverticaleBocht</option>
+<option value='HSkabel'>HSkabel</option>
+<option value='HSmof'>HSmof</option>
+<option value='HSstation'>HSstation</option>
+<option value='KBanode'>KBanode</option>
+<option value='KBdrainage'>KBdrainage</option>
+<option value='KBgelijkrichter'>KBgelijkrichter</option>
+<option value='KBmeetdraad'>KBmeetdraad</option>
+<option value='KBmeetpaal'>KBmeetpaal</option>
+<option value='KBobject'>KBobject</option>
+<option value='LSkabel'>LSkabel</option>
+<option value='LSkast'>LSkast</option>
+<option value='LSmof'>LSmof</option>
+<option value='LSoverdrachtspunt'>LSoverdrachtspunt</option>
+<option value='MSkabel'>MSkabel</option>
+<option value='MSmof'>MSmof</option>
+<option value='MSoverdrachtspunt'>MSoverdrachtspunt</option>
+<option value='MSstation'>MSstation</option>
+<option value='OVLoverdrachtspunt'>OVLoverdrachtspunt</option>
+<option value='Tbuis'>Tbuis</option>
+<option value='TbuisAppendage'>TbuisAppendage</option>
+<option value='Tkabel'>Tkabel</option>
+<option value='Tmof'>Tmof</option>
+<option value='Toverdrachtspunt'>Toverdrachtspunt</option>
+<option value='Tstation'>Tstation</option>
+
+    </select>
+</div>
+
+<script>
+function filterTable_ObjectenTable() {
+    var dropdown = document.getElementById("ObjectenTable_filter");
+    var selected = dropdown.value;
+    var table = document.getElementById("ObjectenTable");
+    var rows = table.getElementsByTagName("tr");
+    var colIndex = 4;
+
+    for (var i = 1; i < rows.length; i++) {
+        var cell = rows[i].getElementsByTagName("td")[colIndex];
+        if (!cell) continue;
+        var value = cell.textContent || cell.innerText;
+
+        if (selected === "ALL" || value.trim() === selected.trim()) {
+            rows[i].style.display = "";
+        } else {
+            rows[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+<div class='table-container'><table border="1" class="dataframe display compact" id="ObjectenTable">
+  <thead>
+    <tr style="text-align: left;">
+      <th>Object</th>
+      <th>Groep</th>
+      <th>Splitsend?</th>
+      <th>Definitie</th>
+      <th>FilterKey_Object</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a id="Aaanlegtechniek"></a><a href="Attributen.html#Aaanlegtechniek">Aaanlegtechniek</a></td>
+      <td>Algemeen</td>
+      <td>nvt</td>
+      <td>Wordt gebruikt voor aanlegtechnieken die een specifieke aanpak of apparatuur vereisen zoals gestuurde boringen of persingen</td>
+      <td>Aaanlegtechniek</td>
+    </tr>
+    <tr>
+      <td><a id="AbeschermingVlak"></a><a href="Attributen.html#AbeschermingVlak">AbeschermingVlak</a></td>
+      <td>Algemeen</td>
+      <td>nvt</td>
+      <td>Vlakvormige bescherming van kabels en leidingen zoals afdekplaten</td>
+      <td>AbeschermingVlak</td>
+    </tr>
+    <tr>
+      <td><a id="AbestandBijlage"></a><a href="Attributen.html#AbestandBijlage">AbestandBijlage</a></td>
+      <td>Algemeen</td>
+      <td>nvt</td>
+      <td>Een bestand zoals foto, profiel van een gestuurde boring of meetrapport dat als bijlagedocument bij een asset wordt meegeleverd</td>
+      <td>AbestandBijlage</td>
+    </tr>
+    <tr>
+      <td><a id="AinUittredepunt"></a><a href="Attributen.html#AinUittredepunt">AinUittredepunt</a></td>
+      <td>Algemeen</td>
+      <td>nvt</td>
+      <td>De in- en uittredepunten bij een gestuurde boring</td>
+      <td>AinUittredepunt</td>
+    </tr>
+    <tr>
+      <td><a id="Akunstwerk"></a><a href="Attributen.html#Akunstwerk">Akunstwerk</a></td>
+      <td>Algemeen</td>
+      <td>nvt</td>
+      <td>Wordt gebruikt voor bijzondere constructies zoals zinkers, brugleidingen e.d..</td>
+      <td>Akunstwerk</td>
+    </tr>
+    <tr>
+      <td><a id="Amaaiveldhoogte"></a><a href="Attributen.html#Amaaiveldhoogte">Amaaiveldhoogte</a></td>
+      <td>Algemeen</td>
+      <td>nvt</td>
+      <td>Meetpunten op maaiveldniveau. Zijn bedoeld als referentie om de diepteligging van kabels en leidingen te kunnen berekenen en om de later bijvoorbeeld ophogingen of afgravingen te kunnen constateren.</td>
+      <td>Amaaiveldhoogte</td>
+    </tr>
+    <tr>
+      <td><a id="Amantelbuis"></a><a href="Attributen.html#Amantelbuis">Amantelbuis</a></td>
+      <td>Algemeen</td>
+      <td>nvt</td>
+      <td>Beschermingsbuis die wordt gebruikt om kabels of leidingen bijvoorbeeld onder een weg door te brengen</td>
+      <td>Amantelbuis</td>
+    </tr>
+    <tr>
+      <td><a id="AmantelbuisInhoud"></a><a href="Attributen.html#AmantelbuisInhoud">AmantelbuisInhoud</a></td>
+      <td>Algemeen</td>
+      <td>nvt</td>
+      <td>Dit is geen asset, maar een hulpmiddel om visueel in het kaartbeeld en administratief vast te leggen in hoeverre kabels/leidingen in een mantelbuis of kunstwerk liggen</td>
+      <td>AmantelbuisInhoud</td>
+    </tr>
+    <tr>
+      <td><a id="Amarkeringsobject"></a><a href="Attributen.html#Amarkeringsobject">Amarkeringsobject</a></td>
+      <td>Algemeen</td>
+      <td>nvt</td>
+      <td>Bovengronds object waarmee aangeduid wordt dat ter plaatse ondergrondse infrastructuur aanwezig is</td>
+      <td>Amarkeringsobject</td>
+    </tr>
+    <tr>
+      <td><a id="Aopmerking"></a><a href="Attributen.html#Aopmerking">Aopmerking</a></td>
+      <td>Algemeen</td>
+      <td>nvt</td>
+      <td>Object waarmee in het kaartbeeld bijzonderheden kunnen worden vastgelegd zoals afwijkingen tussen administratie en werkelijkheid</td>
+      <td>Aopmerking</td>
+    </tr>
+    <tr>
+      <td><a id="AprojectReferentie"></a><a href="Attributen.html#AprojectReferentie">AprojectReferentie</a></td>
+      <td>Algemeen</td>
+      <td>nvt</td>
+      <td>Vlakobject dat het gebied weergeeft waarop het project betrekking heeft en drager van algemene projectgegevens</td>
+      <td>AprojectReferentie</td>
+    </tr>
+    <tr>
+      <td><a id="Eaarddraad"></a><a href="Attributen.html#Eaarddraad">Eaarddraad</a></td>
+      <td>Elektriciteit, Aardnet</td>
+      <td>nvt</td>
+      <td>Kabel die wordt gebruikt om het te aarden object te verbinden met een aardpen</td>
+      <td>Eaarddraad</td>
+    </tr>
+    <tr>
+      <td><a id="Eaardmof"></a><a href="Attributen.html#Eaardmof">Eaardmof</a></td>
+      <td>Elektriciteit, Aardnet</td>
+      <td>Ja</td>
+      <td>Verbindingsmof om aarddraden te verbinden</td>
+      <td>Eaardmof</td>
+    </tr>
+    <tr>
+      <td><a id="Eaardpen"></a><a href="Attributen.html#Eaardpen">Eaardpen</a></td>
+      <td>Elektriciteit, Aardnet</td>
+      <td>nvt</td>
+      <td>Geleider die in de grond wordt aangebracht ten behoeve van aarding van netten.</td>
+      <td>Eaardpen</td>
+    </tr>
+    <tr>
+      <td><a id="Eoliedrukinstallatie"></a><a href="Attributen.html#Eoliedrukinstallatie">Eoliedrukinstallatie</a></td>
+      <td>Elektriciteit, Hoogspanning</td>
+      <td>nvt</td>
+      <td>Installatie die bedoeld is om oliedrukkabels van de juiste oliedruk te voorzien</td>
+      <td>Eoliedrukinstallatie</td>
+    </tr>
+    <tr>
+      <td><a id="Eoliedrukleiding"></a><a href="Attributen.html#Eoliedrukleiding">Eoliedrukleiding</a></td>
+      <td>Elektriciteit, Hoogspanning</td>
+      <td>nvt</td>
+      <td>Leiding die de oliedrukinstallatie verbindt met de oliedrukkabels</td>
+      <td>Eoliedrukleiding</td>
+    </tr>
+    <tr>
+      <td><a id="HSkabel"></a><a href="Attributen.html#HSkabel">HSkabel</a></td>
+      <td>Elektriciteit, Hoogspanning</td>
+      <td>nvt</td>
+      <td>Hoogspanningskabel, ondergronds</td>
+      <td>HSkabel</td>
+    </tr>
+    <tr>
+      <td><a id="HSmof"></a><a href="Attributen.html#HSmof">HSmof</a></td>
+      <td>Elektriciteit, Hoogspanning</td>
+      <td>Ja</td>
+      <td>Mof waarmee hoofspanningskabels onderling worden verbonden</td>
+      <td>HSmof</td>
+    </tr>
+    <tr>
+      <td><a id="HSstation"></a><a href="Attributen.html#HSstation">HSstation</a></td>
+      <td>Elektriciteit, Hoogspanning</td>
+      <td>nvt</td>
+      <td>Station dat onderdeel is van het hoogspanningsnet, bedoeld om te schakelen en vaak ook te transformeren naar lagere spanningsniveaus</td>
+      <td>HSstation</td>
+    </tr>
+    <tr>
+      <td><a id="LSkabel"></a><a href="Attributen.html#LSkabel">LSkabel</a></td>
+      <td>Elektriciteit, Laagspanning</td>
+      <td>nvt</td>
+      <td>Laagspanningskabel (distributienet en aansluitnet)</td>
+      <td>LSkabel</td>
+    </tr>
+    <tr>
+      <td><a id="LSkast"></a><a href="Attributen.html#LSkast">LSkast</a></td>
+      <td>Elektriciteit, Laagspanning</td>
+      <td>nvt</td>
+      <td>Laagspanningsverdeelkast, al dan niet met verdeelfunctie voor openbare verlichting</td>
+      <td>LSkast</td>
+    </tr>
+    <tr>
+      <td><a id="LSmof"></a><a href="Attributen.html#LSmof">LSmof</a></td>
+      <td>Elektriciteit, Laagspanning</td>
+      <td>Ja, uitgezonderd aftakmof</td>
+      <td>Mof waarmee laagspanningskabels worden verbonden of afgetakt naar aansluitkabels</td>
+      <td>LSmof</td>
+    </tr>
+    <tr>
+      <td><a id="LSoverdrachtspunt"></a><a href="Attributen.html#LSoverdrachtspunt">LSoverdrachtspunt</a></td>
+      <td>Elektriciteit, Laagspanning</td>
+      <td>nvt</td>
+      <td>Het punt dat de overgang markeert tussen het net van de netbeheerder en de eigen installatie van de klant</td>
+      <td>LSoverdrachtspunt</td>
+    </tr>
+    <tr>
+      <td><a id="OVLoverdrachtspunt"></a><a href="Attributen.html#OVLoverdrachtspunt">OVLoverdrachtspunt</a></td>
+      <td>Elektriciteit, Laagspanning</td>
+      <td>nvt</td>
+      <td>Aansluitpunt voor openbare verlichting, meestal een lichtmast.</td>
+      <td>OVLoverdrachtspunt</td>
+    </tr>
+    <tr>
+      <td><a id="MSkabel"></a><a href="Attributen.html#MSkabel">MSkabel</a></td>
+      <td>Elektriciteit, Middenspanning</td>
+      <td>nvt</td>
+      <td>Middenspanningskabel</td>
+      <td>MSkabel</td>
+    </tr>
+    <tr>
+      <td><a id="MSmof"></a><a href="Attributen.html#MSmof">MSmof</a></td>
+      <td>Elektriciteit, Middenspanning</td>
+      <td>nvt</td>
+      <td>Mof waarmee middenspanningskabels worden verbonden</td>
+      <td>MSmof</td>
+    </tr>
+    <tr>
+      <td><a id="MSoverdrachtspunt"></a><a href="Attributen.html#MSoverdrachtspunt">MSoverdrachtspunt</a></td>
+      <td>Elektriciteit, Middenspanning</td>
+      <td>nvt</td>
+      <td>Het punt dat de overgang markeert tussen het middenspanningsnet van de netbeheerder en de eigen installatie van de (zakelijke) klant</td>
+      <td>MSoverdrachtspunt</td>
+    </tr>
+    <tr>
+      <td><a id="MSstation"></a><a href="Attributen.html#MSstation">MSstation</a></td>
+      <td>Elektriciteit, Middenspanning</td>
+      <td>nvt</td>
+      <td>Transformatorstation waar middenspanning wordt geschakeld en/of wordt getransformeerd naar laagspanning</td>
+      <td>MSstation</td>
+    </tr>
+    <tr>
+      <td><a id="Gafsluiter"></a><a href="Attributen.html#Gafsluiter">Gafsluiter</a></td>
+      <td>Gas</td>
+      <td>Ja</td>
+      <td>Afsluiter in het gasnet, bedoeld om zo nodig delen van het gasnet drukvrij te maken</td>
+      <td>Gafsluiter</td>
+    </tr>
+    <tr>
+      <td><a id="Gaftakzadel"></a><a href="Attributen.html#Gaftakzadel">Gaftakzadel</a></td>
+      <td>Gas</td>
+      <td>Nee</td>
+      <td>Object dat wordt gebruikt om een aansluitleiding aan het distributienet te koppelen</td>
+      <td>Gaftakzadel</td>
+    </tr>
+    <tr>
+      <td><a id="GappendageOverig"></a><a href="Attributen.html#GappendageOverig">GappendageOverig</a></td>
+      <td>Gas</td>
+      <td>Ja</td>
+      <td>Verzamelobject voor appendages in het gasnet die doorgaans minder vaak voorkomen</td>
+      <td>GappendageOverig</td>
+    </tr>
+    <tr>
+      <td><a id="Gblaasgatzadel"></a><a href="Attributen.html#Gblaasgatzadel">Gblaasgatzadel</a></td>
+      <td>Gas</td>
+      <td>Nee</td>
+      <td></td>
+      <td>Gblaasgatzadel</td>
+    </tr>
+    <tr>
+      <td><a id="Geindstuk"></a><a href="Attributen.html#Geindstuk">Geindstuk</a></td>
+      <td>Gas</td>
+      <td>nvt</td>
+      <td>Object dat gebruikt wordt om een leidinguiteinde af te dichten</td>
+      <td>Geindstuk</td>
+    </tr>
+    <tr>
+      <td><a id="Gisolatiestuk"></a><a href="Attributen.html#Gisolatiestuk">Gisolatiestuk</a></td>
+      <td>Gas</td>
+      <td>Ja</td>
+      <td>Niet-geleidende koppeling tussen twee geleidende leidingen, waardoor deze ten opzichte van elkaar elektrisch ontkoppeld zijn. Dit is bedoeld om leidingsecties te kunnen maken voor Kathodische Bescherming</td>
+      <td>Gisolatiestuk</td>
+    </tr>
+    <tr>
+      <td><a id="Gleiding"></a><a href="Attributen.html#Gleiding">Gleiding</a></td>
+      <td>Gas</td>
+      <td>nvt</td>
+      <td>Gasleiding, zowel aansluitnet, distributienet als transportnet</td>
+      <td>Gleiding</td>
+    </tr>
+    <tr>
+      <td><a id="Gleidingafblaas"></a><a href="Attributen.html#Gleidingafblaas">Gleidingafblaas</a></td>
+      <td>Gas</td>
+      <td>nvt</td>
+      <td>Afblaaspunt voor het gasleidingnet, bevindt zich aan het einde van een afblaasleiding</td>
+      <td>Gleidingafblaas</td>
+    </tr>
+    <tr>
+      <td><a id="Gmeetpunt"></a><a href="Attributen.html#Gmeetpunt">Gmeetpunt</a></td>
+      <td>Gas</td>
+      <td>Nee</td>
+      <td>Meetpunt in het gasnet waar bijvoorbeeld druk of flow wordt gemeten</td>
+      <td>Gmeetpunt</td>
+    </tr>
+    <tr>
+      <td><a id="Gontspanningselement"></a><a href="Attributen.html#Gontspanningselement">Gontspanningselement</a></td>
+      <td>Gas</td>
+      <td>Nee</td>
+      <td>Ook bekend als "zakkende grond constructie" bedoeld om schade aan de aansluitleiding ter hoogte van de gevel te voorkomen als gevolg van verzakkingen van de grond ten opzichte van de fundering van het pand</td>
+      <td>Gontspanningselement</td>
+    </tr>
+    <tr>
+      <td><a id="Goverdrachtspunt"></a><a href="Attributen.html#Goverdrachtspunt">Goverdrachtspunt</a></td>
+      <td>Gas</td>
+      <td>nvt</td>
+      <td>Het punt dat de overgang markeert tussen het gasnet van de netbeheerder en de eigen installatie van de klant</td>
+      <td>Goverdrachtspunt</td>
+    </tr>
+    <tr>
+      <td><a id="Govergangsstuk"></a><a href="Attributen.html#Govergangsstuk">Govergangsstuk</a></td>
+      <td>Gas</td>
+      <td>Ja</td>
+      <td>Koppeling tussen twee leidingen, kan een materiaal, diameter of leeftijdovergang zijn of een combinatie</td>
+      <td>Govergangsstuk</td>
+    </tr>
+    <tr>
+      <td><a id="Gsifon"></a><a href="Attributen.html#Gsifon">Gsifon</a></td>
+      <td>Gas</td>
+      <td>nvt</td>
+      <td>Hulpstuk in de hoofdleiding voor de opvang van vloeistoffen die in het gasnet zijn gekomen</td>
+      <td>Gsifon</td>
+    </tr>
+    <tr>
+      <td><a id="Gstation"></a><a href="Attributen.html#Gstation">Gstation</a></td>
+      <td>Gas</td>
+      <td>nvt</td>
+      <td>Installatie waarmee gasdruk kan wordne gereguleerd/omgezet, meestal voorzien van de nodige veiligheden</td>
+      <td>Gstation</td>
+    </tr>
+    <tr>
+      <td><a id="GtStuk"></a><a href="Attributen.html#GtStuk">GtStuk</a></td>
+      <td>Gas</td>
+      <td>Ja</td>
+      <td>T-stuk waarmee drie leidingen in het gasnet worden verbonden</td>
+      <td>GtStuk</td>
+    </tr>
+    <tr>
+      <td><a id="GverticaleBocht"></a><a href="Attributen.html#GverticaleBocht">GverticaleBocht</a></td>
+      <td>Gas</td>
+      <td>Ja</td>
+      <td>Bocht tussen een horizontale en vertikale leiding.</td>
+      <td>GverticaleBocht</td>
+    </tr>
+    <tr>
+      <td><a id="KBanode"></a><a href="Attributen.html#KBanode">KBanode</a></td>
+      <td>Kathodische bescherming</td>
+      <td>nvt</td>
+      <td>Object in een KB-installatie dat wordt opgeofferd ten gunste van het behoud van de verbonden leidingen</td>
+      <td>KBanode</td>
+    </tr>
+    <tr>
+      <td><a id="KBdrainage"></a><a href="Attributen.html#KBdrainage">KBdrainage</a></td>
+      <td>Kathodische bescherming</td>
+      <td>nvt</td>
+      <td>Door het toepassen van zogenaamde AC-drainages (ook wel wisselstroom-drainages genoemd) wordt de wisselstroom uit de leiding gehaald maar wordt de KB-stroom in de leiding gehouden. Door het toepassen van een DC-drainage worden zwerfstromen naar de rails teruggevoerd.</td>
+      <td>KBdrainage</td>
+    </tr>
+    <tr>
+      <td><a id="KBgelijkrichter"></a><a href="Attributen.html#KBgelijkrichter">KBgelijkrichter</a></td>
+      <td>Kathodische bescherming</td>
+      <td>nvt</td>
+      <td>De gelijkrichter, spanningsbron bij _x001C_opgedrukte stroom_x001D_. Gelijkrichter is middels  KB draad / draden met leiding(en) verbonden</td>
+      <td>KBgelijkrichter</td>
+    </tr>
+    <tr>
+      <td><a id="KBmeetdraad"></a><a href="Attributen.html#KBmeetdraad">KBmeetdraad</a></td>
+      <td>Kathodische bescherming</td>
+      <td>nvt</td>
+      <td>Meetdraad verbindt de gelijkrichter met de andere KB-objecten</td>
+      <td>KBmeetdraad</td>
+    </tr>
+    <tr>
+      <td><a id="KBmeetpaal"></a><a href="Attributen.html#KBmeetpaal">KBmeetpaal</a></td>
+      <td>Kathodische bescherming</td>
+      <td>nvt</td>
+      <td>Meetpunt Kathodische bescherming, plaats waar de meetdraden aangesloten zijn en het functioneren van de kathodische bescherming gecontroleerd kan worden.</td>
+      <td>KBmeetpaal</td>
+    </tr>
+    <tr>
+      <td><a id="KBobject"></a><a href="Attributen.html#KBobject">KBobject</a></td>
+      <td>Kathodische bescherming</td>
+      <td>nvt</td>
+      <td>Verzamelobject voor KB-objecten die doorgaans minder vaak voorkomen</td>
+      <td>KBobject</td>
+    </tr>
+    <tr>
+      <td><a id="Tbuis"></a><a href="Attributen.html#Tbuis">Tbuis</a></td>
+      <td>Telecom</td>
+      <td>nvt</td>
+      <td>Buis bedoeld voor het beschermen van telecom glasvezelkabel. De glasvezelkabel kan later in de buis worden geblazen</td>
+      <td>Tbuis</td>
+    </tr>
+    <tr>
+      <td><a id="TbuisAppendage"></a><a href="Attributen.html#TbuisAppendage">TbuisAppendage</a></td>
+      <td>Telecom</td>
+      <td>Ja</td>
+      <td>Verzamelobject voor bijvoorbeeld handholes en soortgelijke objecten in het telecom buizennetwerk</td>
+      <td>TbuisAppendage</td>
+    </tr>
+    <tr>
+      <td><a id="Tkabel"></a><a href="Attributen.html#Tkabel">Tkabel</a></td>
+      <td>Telecom</td>
+      <td>nvt</td>
+      <td>Koperen telecomkabel. Deze worden voornamelijk gebruikt om te verwijderen koperen kabels te kunnen weergeven in het ontwerp en verwijderde kabels in de as-built tekening</td>
+      <td>Tkabel</td>
+    </tr>
+    <tr>
+      <td><a id="Tmof"></a><a href="Attributen.html#Tmof">Tmof</a></td>
+      <td>Telecom</td>
+      <td>Ja, uitgezonderd aftakmof</td>
+      <td>Mof in het koperen telecomnet</td>
+      <td>Tmof</td>
+    </tr>
+    <tr>
+      <td><a id="Toverdrachtspunt"></a><a href="Attributen.html#Toverdrachtspunt">Toverdrachtspunt</a></td>
+      <td>Telecom</td>
+      <td>nvt</td>
+      <td>Aansluitpunt waar een installatie is gekoppeld aan het telecomnetwerk</td>
+      <td>Toverdrachtspunt</td>
+    </tr>
+    <tr>
+      <td><a id="Tstation"></a><a href="Attributen.html#Tstation">Tstation</a></td>
+      <td>Telecom</td>
+      <td>nvt</td>
+      <td>Locatie waar actieve componenten in het telecomnetwerk opgesteld kunnen zijn.</td>
+      <td>Tstation</td>
+    </tr>
+    <tr>
+      <td><a id="AprojectReferentie"></a><a href="Attributen.html#AprojectReferentie">AprojectReferentie</a></td>
+      <td>Algemeen</td>
+      <td>nvt</td>
+      <td>Geeft de gegevens en het gebied waarop het project betrekking heeft.</td>
+      <td>AprojectReferentie</td>
+    </tr>
+    <tr>
+      <td><a id="Averplaatsing"></a><a href="Attributen.html#Averplaatsing">Averplaatsing</a></td>
+      <td>Algemeen</td>
+      <td>nvt</td>
+      <td>Geeft de oude en nieuwe ligging weer van de kabel of leiding bij verplaatsing</td>
+      <td>Averplaatsing</td>
+    </tr>
+  </tbody>
+</table></div>
