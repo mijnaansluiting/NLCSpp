@@ -1,0 +1,48 @@
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 14px;
+}
+
+.table-container {
+  overflow-x: auto;
+  overflow-y: visible;
+  width: 100%;
+  max-height: 80vh;
+  display: block;
+  border: 1px solid #ccc;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  background: #d9f2f2;
+  z-index: 3;
+  text-align: left;
+}
+
+td, th {
+  padding: 6px;
+  white-space: normal;
+}
+
+a[id] {
+  scroll-margin-top: 80px;
+}
+
+/* Kolommen verbergen */
+#AttributenTable td:nth-child(10),
+#AttributenTable th:nth-child(10),
+#ObjectenTable td:nth-child(5),
+#ObjectenTable th:nth-child(5),
+#KeuzelijstenTable td:nth-child(7),
+#KeuzelijstenTable th:nth-child(7) {
+  display: none;
+}
+
+/* Smalle kolom bij attributen */
+#AttributenTable td:nth-child(5),
+#AttributenTable th:nth-child(5) {
+  max-width: 140px;
+  width: 140px;
+  word-break: break-word;
+}
