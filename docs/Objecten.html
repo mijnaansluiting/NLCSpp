@@ -1,66 +1,13 @@
+<link rel="stylesheet" href="assets/styles.css">
 
-<style>
-body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    font-size: 14px;
-}
+<script src="assets/table-filter.js" defer></script>
+<script src="assets/navigation.js" defer></script>
 
-.table-container {
-    overflow-x: auto;
-    overflow-y: visible;
-    width: 100%;
-    max-height: 80vh;
-    display: block;
-    border: 1px solid #ccc;
-}
-
-thead th {
-    position: sticky;
-    top: 0;
-    background: #d9f2f2;
-    z-index: 3;
-    text-align: left;
-}
-
-td, th {
-    padding: 6px;
-    white-space: normal;
-}
-
-a[id] {
-    scroll-margin-top: 80px;
-}
-
-#AttributenTable td:nth-child(10),
-#AttributenTable th:nth-child(10) {
-    display: none;
-}
-
-#ObjectenTable td:nth-child(5),
-#ObjectenTable th:nth-child(5) {
-    display: none;
-}
-
-#KeuzelijstenTable td:nth-child(7),
-#KeuzelijstenTable th:nth-child(7) {
-    display: none;
-}
-
-#AttributenTable td:nth-child(5),
-#AttributenTable th:nth-child(5) {
-    max-width: 140px;
-    width: 140px;
-    white-space: normal;
-    word-break: break-word;
-}
-</style>
-
-
-
-<div style='margin-bottom: 10px; font-size: 14px;'>
-    <label><b>Filter op Object:</b></label>
-    <select id="ObjectenTable_filter" onchange="filterTable_ObjectenTable()">
-        <option value='ALL'>All</option>
+<div style="margin-bottom: 10px; font-size: 14px;">
+  <label><b>Filter op Object:</b></label>
+  <select id="ObjectenTable_filter"
+          onchange="filterTable('ObjectenTable','ObjectenTable_filter',4)">
+<option value="ALL">All</option>
 <option value='Aaanlegtechniek'>Aaanlegtechniek</option>
 <option value='AbeschermingVlak'>AbeschermingVlak</option>
 <option value='AbestandBijlage'>AbestandBijlage</option>
@@ -118,31 +65,8 @@ a[id] {
 <option value='Tmof'>Tmof</option>
 <option value='Toverdrachtspunt'>Toverdrachtspunt</option>
 <option value='Tstation'>Tstation</option>
-
     </select>
 </div>
-
-<script>
-function filterTable_ObjectenTable() {
-    var dropdown = document.getElementById("ObjectenTable_filter");
-    var selected = dropdown.value;
-    var table = document.getElementById("ObjectenTable");
-    var rows = table.getElementsByTagName("tr");
-    var colIndex = 4;
-
-    for (var i = 1; i < rows.length; i++) {
-        var cell = rows[i].getElementsByTagName("td")[colIndex];
-        if (!cell) continue;
-        var value = cell.textContent || cell.innerText;
-
-        if (selected === "ALL" || value.trim() === selected.trim()) {
-            rows[i].style.display = "";
-        } else {
-            rows[i].style.display = "none";
-        }
-    }
-}
-</script>
 
 <div class='table-container'><table border="1" class="dataframe display compact" id="ObjectenTable">
   <thead>

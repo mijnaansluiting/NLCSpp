@@ -1,0 +1,80 @@
+<link rel="stylesheet" hrefsrc="assets/table-filter.js" deferigation.js</script>
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <title>Datamodel – Documentatie</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Gedeelde styling -->
+  <link rel="stylesheet" href="assets/styles.css">
+
+  <!-- Page-specifieke layout -->
+  <style>
+    .nav {
+      margin: 20px 0;
+    }
+    .nav ul {
+      list-style: none;
+      padding: 0;
+    }
+    .nav li {
+      margin: 10px 0;
+    }
+    .nav a {
+      font-size: 16px;
+      text-decoration: none;
+      color: #0066cc;
+    }
+    .nav a:hover {
+      text-decoration: underline;
+    }
+    small {
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Datamodel documentatie</h1>
+
+  <p>
+    Deze pagina vormt het startpunt voor de datamodel‑documentatie.
+  </p>
+
+  <nav class="nav">
+    <ul>
+      <li>
+        <a href="objecten.html">📦 Objecten</a><br>
+        <small>Overzicht van objecttypen en basisdefinities</small>
+      </li>
+
+      <li>
+        <a href="attributen.html"
+           onclick="sessionStorage.setItem('origin','index')">🏷️ Attributen</a><br>
+        <small>Attributen per objecttype, met verwijzingen naar keuzelijsten</small>
+      </li>
+
+      <li>
+        <a href="keuzelijsten.html"
+           onclick="sessionStorage.setItem('origin','index')">📋 Keuzelijsten</a><br>
+        <small>Domeinwaarden en enumeraties</small>
+      </li>
+    </ul>
+  </nav>
+
+  <hr>
+
+  <section>
+    <h2>Gebruik</h2>
+    <ul>
+      <li>Start bij <b>Objecten</b> om het datamodel conceptueel te verkennen</li>
+      <li>Ga per object door naar de bijbehorende <b>Attributen</b></li>
+      <li>Gebruik <b>Keuzelijsten</b> voor toegestane waarden</li>
+    </ul>
+  </section>
+
+</body>
+</html>
