@@ -3,27 +3,131 @@
 <script src="assets/table-filter.js" defer></script>
 <script src="assets/navigation.js" defer></script>
 
-<script>
-window.onload = function() {
+<style>
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+}
 
-    // Only show the button if we came from Attributen.html
-    const origin = sessionStorage.getItem("origin");
-    if (!origin) return;
+.table-container {
+    overflow-x: auto;
+    overflow-y: visible;
+    width: 100%;
+    max-height: 80vh;
+    display: block;
+    border: 1px solid #ccc;
+}
 
-    // Create a clean left-aligned back link
-    const btn = document.createElement("div");
-    btn.innerHTML = '<a style="font-size:14px; color:#0066cc; text-decoration:none;" href="javascript:history.back()">← Terug</a>';
+thead th {
+    position: sticky;
+    top: 0;
+    background: #d9f2f2 !important;
+    z-index: 3;
+    text-align: left;
+}
 
-    // Insert it above the table
-    document.body.insertBefore(btn, document.body.firstChild);
-};
-</script>
+table {
+    border-collapse: collapse;
+    width: 100%;
+    display: table;
+}
 
-<div style="margin-bottom: 10px; font-size: 14px;">
-  <label><b>Filter op DOMAIN_NAME:</b></label>
-  <select id="KeuzelijstenTable_filter"
-          onchange="filterTable('KeuzelijstenTable','KeuzelijstenTable_filter',6)">
-<option value='ALL'>All</option>
+td, th {
+    padding: 6px;
+    white-space: normal;
+    word-break: normal !important;
+    overflow-wrap: anywhere !important;
+    min-width: 150px !important;
+}
+
+/* ------------------------------
+   OBJECTEN TABLE
+------------------------------ */
+#ObjectenTable td:nth-child(1),
+#ObjectenTable th:nth-child(1),
+#ObjectenTable td:nth-child(2),
+#ObjectenTable th:nth-child(2),
+#ObjectenTable td:nth-child(3),
+#ObjectenTable th:nth-child(3) {
+    white-space: nowrap !important;
+}
+
+#ObjectenTable td:nth-child(4),
+#ObjectenTable th:nth-child(4) {
+    max-width: 600px !important;
+}
+
+#ObjectenTable td:nth-child(5),
+#ObjectenTable th:nth-child(5) {
+    display: none !important;
+}
+
+/* ------------------------------
+   ATTRIBUTEN TABLE
+------------------------------ */
+#AttributenTable td:nth-child(1),
+#AttributenTable th:nth-child(1),
+#AttributenTable td:nth-child(2),
+#AttributenTable th:nth-child(2),
+#AttributenTable td:nth-child(3),
+#AttributenTable th:nth-child(3),
+#AttributenTable td:nth-child(4),
+#AttributenTable th:nth-child(4) {
+    white-space: nowrap !important;
+}
+
+#AttributenTable td:nth-child(5),
+#AttributenTable th:nth-child(5) {
+    max-width: 350px !important;
+}
+
+#AttributenTable td:nth-child(6),
+#AttributenTable th:nth-child(6),
+#AttributenTable td:nth-child(7),
+#AttributenTable th:nth-child(7) {
+    max-width: 90px !important;
+}
+
+#AttributenTable td:nth-child(8),
+#AttributenTable th:nth-child(8) {
+    max-width: 500px !important;
+}
+
+#AttributenTable td:nth-child(10),
+#AttributenTable th:nth-child(10) {
+    display: none !important;
+}
+
+/* ------------------------------
+   KEUZELIJSTEN TABLE
+------------------------------ */
+#KeuzelijstenTable td:nth-child(4),
+#KeuzelijstenTable th:nth-child(4),
+#KeuzelijstenTable td:nth-child(5),
+#KeuzelijstenTable th:nth-child(5),
+#KeuzelijstenTable td:nth-child(6),
+#KeuzelijstenTable th:nth-child(6) {
+    width: 60px !important;
+    max-width: 60px !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+}
+
+#KeuzelijstenTable td:nth-child(3),
+#KeuzelijstenTable th:nth-child(3) {
+    max-width: 500px !important;
+}
+
+#KeuzelijstenTable td:nth-child(7),
+#KeuzelijstenTable th:nth-child(7) {
+    display: none !important;
+}
+</style>
+
+<div style='margin-bottom: 10px; font-size: 14px;'>
+    <label><b>Filter op DOMAIN_NAME:</b></label>
+    <select id="KeuzelijstenTable_filter" onchange="filterTable_KeuzelijstenTable()">
+        <option value='ALL'>All</option>
 <option value='AansluitsetOvl'>AansluitsetOvl</option>
 <option value='AansluitwijzeOvl'>AansluitwijzeOvl</option>
 <option value='Aardingsysteem'>Aardingsysteem</option>
@@ -173,7 +277,6 @@ function filterTable_KeuzelijstenTable() {
     }
 }
 </script>
-
 <div class='table-container'><table border="1" class="dataframe display compact" id="KeuzelijstenTable">
   <thead>
     <tr style="text-align: left;">
